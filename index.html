@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Podanie o wniosek urlopowy</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="./style.css">
+        <script src="html2pdf.bundle.min.js"></script>
+        <script>
+            const generatePDF = () => {
+                setTimeout(() => {
+                html2pdf().from(document.getElementById('proposal')).save()
+                }, 1500)
+            }
+        </script>
+    </head>
+    <body>
+        <div class="navbar navbar-expand-lg navbar-dark bg-light">
+            <p class="h1">Wniosek urlopowy</p>
+        </div>
+        
+    <div class="container-sm">
+        <form method="get" name="form" id="form">
+            <span class="form-control">
+                <label class="form-label" for="date">Data</label>
+                <input class="input-group-text" type="date" id="date" required>
+            </span>
+            <span class="form-control">
+                <label class="form-label" for="neme">Imię</label>
+                <input class="input-group-text" type="text" id="name" required>
+            </span>
+            <span class="form-control">
+                <label class="form-label" for="surname">Nazwisko</label>
+                <input class="input-group-text" type="text" id="surname" required>
+                
+            </span>
+            <span class="form-control">
+                <label class="form-label" for="type">Typ urlopu</label>
+                <select class="form-select" name="type" id="type">
+                    <option value="wypoczynkowy">Urlop wypoczynkowy</option>
+                    <option value="zadanie">Urlop na żądanie (Art. 167 Kodeksu pracy)</option>
+                    <option value="okolicznosciowy">Urlop okolicznościowy</option>
+                    <option value="wolny">Czas wolny (z zachowaniem prawa do wynagrodzenia)</option>
+                    <option value="opieki">Dzień opieki nad dzieckiem (Art. 188 Kodeksu pracy)</option>
+                </select>
+            </span>
+            <span class="form-control">
+                    <span >
+                        <label class="form-label" for="start">Początek urlopu</label>
+                        <input class="input-group-text" type="date" id="start" required>
+                    </span>
+                    <span>
+                        <label class="form-label" for="end">Koniec urlopu</label>
+                        <input class="input-group-text" type="date" id="end" required>
+                    </span>
+            </span>
+            <span class="form-control">
+                <label for="days">Ilość dni roboczych</label>
+                <input class="input-group-text" type="text" id="days" required>
+            </span>
+            <span class="form-control">
+                <label for="hours">Ilość godzin roboczych</label>
+                <input class="input-group-text" type="text" id="hours" required>
+            </span>
+            <span class="form-control">
+                <label class="form-label" for="deputy">Zastępstwo na stanowisku: </label>
+                <input class="input-group-text" type="text" id="deputy" required>
+            </span>
+            <span>
+                <button type="submit" onclick="generatePDF()" class="btn btn-primary btn-lg btn-block" >Wygeneruj PDF</button>
+            </span>
+        </form>
+    </div>
+    <div id="proposal" class="proposal">
+        <div class="dateDiv" id="dateDiv"></div>
+        <div class="nameSurnameDiv" id="nameSurnameDiv"></div>
+        <div class="occasionalReasonDiv" id="occasionalReasonDiv"></div>
+        <div class="freeReasonDiv1" id="freeReasonDiv1"></div>
+        <div class="freeReasonDiv2" id="freeReasonDiv2"></div>
+        <div class="startDiv" id="startDiv"></div>
+        <div class="endDiv" id="endDiv"></div>
+        <div class="daysDiv" id="daysDiv"></div>
+        <div class="hoursDiv" id="hoursDiv"></div>
+        <div class="deputyDiv" id="deputyDiv"></div>
+        <div>
+            <div class="header">
+                <p>Tarnobrzeg,&nbsp</p><p class="date">........................&nbsp</p>
+            </div>
+                <br>
+                <h3><b>WNIOSEK</b></h3>
+                <br>
+                <div class="nameAndSurname">
+                    <h5><b>IMIĘ I NAZWISKO&nbsp</b></h5>
+                    <p>.............................................................................................</p>
+                </div>
+                <div class="request">
+                    <b>Proszę o udzielenie mi </b> <p>&nbsp(zaznaczyć właściwy kwadrat):</p>
+                </div>
+                <ul class="proposalType">
+                    <li class="listItem">
+                        <input type="checkbox" id="vacationCheckbox" >
+                        <p>&nbsp urlopu wypoczynkowego</p>
+                    </li>
+                    <li class="listItem">
+                        <input type="checkbox" id="demandCheckbox">
+                        <p>&nbsp urlopu na żądanie (Art. 167<sup>2</sup> Kodeksu pracy)</p>
+                    </li>
+                    <li class="listItem">
+                        <input type="checkbox" id="occasionalCheckbox">
+                        <div>
+                            <p>&nbsp urlopu okolicznościowego z tytułu </p>
+                            <p>............................................................................................</p>
+                        </div>
+                    </li>
+                    <li class="listItem">
+                        <input type="checkbox" id="freeCheckbox">
+                        <div>
+                            <p>&nbsp czasu wolnego (z zachowaniem prawa do wynagrodzenia) z tytułu</p>
+                            <p>&nbsp........................................................................................................</p>
+                        </div>
+                        <div><p>&nbsp.............................................</p></div>
+                    </li>
+                    <li class="listItem">
+                        <input type="checkbox" id="careCheckbox">
+                        <p>&nbsp dnia opieki nad dzieckiem (art. 188 Kodeksu pracy)</p>
+                    </li>
+                </ul>
+                <div class="term">
+                    <b>w terminie:&nbsp </b>
+                    <p>&nbspod&nbsp</p> <p>.............................</p>
+                    <p>&nbspdo&nbsp</p> <p>.............................</p>
+                    <p>&nbspw tym ilość dni roboczych</p>
+                    <p>&nbsp.......................</p>
+                </div>
+                <div class="hoursQuantity">
+                    <p>w tym ilość godzin</p>
+                    <p>&nbsp.......................</p>
+                </div>
+                <br >
+
+                <div class="deputy">
+                    <p>Zastępstwo na stanowisku kierowniczym lub samodzielnym pełnić będzie </p> <p></p>
+                    <p>&nbsp.......................................</p>
+                </div>             
+                <br>   
+                <div class="signatures">
+                    <div>
+                        <p>......................................................</p>
+                        <small>czytelny podpis przełożonego (zgoda)</small>
+                    </div>
+                    <div>
+                        <p>.......................................</p>
+                        <small>czytelny podpis pracownika</small>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    <script src="./app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+</body>
+</html>

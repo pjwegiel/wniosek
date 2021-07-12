@@ -1,0 +1,129 @@
+.proposal {
+  font-family: "Times New Roman", Times, serif;
+  margin: 10%;
+  position: relative;
+}
+
+.proposal > div {
+  width: 100%;
+}
+
+h3 {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+div {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  display: flex;
+  float: right;
+}
+
+body {
+  padding: 0.3em;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+  padding-bottom: 0;
+}
+
+li {
+  display: flex;
+}
+
+.request {
+  display: flex;
+}
+
+.nameAndSurname {
+  display: flex;
+}
+
+.term {
+  display: flex;
+}
+
+.signatures {
+  display: flex;
+  justify-content: space-between;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+.hoursQuantity {
+  display: flex;
+  float: right;
+}
+
+.deputy {
+  display: flex;
+}
+
+.dateDiv {
+  position: absolute;
+  top: 0;
+  left: 85%;
+}
+
+.nameSurnameDiv {
+  position: absolute;
+  top: 16%;
+  left: 30%;
+}
+
+.occasionalReasonDiv {
+  position: absolute;
+  top: 44%;
+  left: 4%;
+}
+
+.freeReasonDiv1 {
+  position: absolute;
+  top: 49%;
+  left: 72%;
+}
+
+.freeReasonDiv2 {
+  position: absolute;
+  top: 54%;
+  left: 4%;
+}
+
+.startDiv {
+  position: absolute;
+  top: 68%;
+  left: 18%;
+}
+
+.endDiv {
+  position: absolute;
+  top: 68%;
+  left: 40%;
+}
+
+.daysDiv {
+  position: absolute;
+  top: 68%;
+  left: 86%;
+}
+
+.hoursDiv {
+  position: absolute;
+  top: 73%;
+  left: 86%;
+}
+
+.deputyDiv {
+  position: absolute;
+  left: 75%;
+  top: 78%;
+}
