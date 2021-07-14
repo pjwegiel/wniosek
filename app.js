@@ -92,4 +92,17 @@ selectType.addEventListener('change', handleType)
 const form = document.getElementById('form');
 form.addEventListener('submit', submit)
 
+const dateField = document.getElementById('date')
+const startField = document.getElementById('start')
+const endField = document.getElementById('end')
 
+const today = new Date()
+const dd = today.getDate() < 10 ? '0' + today.getDate() : today.getDate()
+const mm = today.getMonth() + 1 < 10 ?  '0' + (today.getMonth() + 1) : today.getMonth() + 1
+const yyyy = today.getFullYear()
+
+todayDate = `${yyyy}-${mm}-${dd}`
+
+dateField.defaultValue = todayDate
+startField.defaultValue = todayDate
+endField.defaultValue = todayDate

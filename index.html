@@ -10,9 +10,18 @@
         <script src="html2pdf.bundle.min.js"></script>
         <script>
             const generatePDF = () => {
-                setTimeout(() => {
-                html2pdf().from(document.getElementById('proposal')).save()
-                }, 1500)
+                const nameSurnameRegex = /([A-ZŹŻŁ]{1}[a-zżźćńłśąęó]{0,12}-[A-ZŹŻŁ]{1}[a-zżźćńłśąęó]{0,12})|([A-ZŹŻŁ]{1}[a-zżźćńłśąęó]{0,12}\s[A-ZŹŻŁ]{1}[a-zżźćńłśąęó]{0,12})|([A-ZŹŻŁ]{1}[a-zżźćńłśąęó]{0,12})/
+                const deputyRegex = /([A-ZŹŻŁ]{1}[a-zżźćńłśąęó]{0,12}\s[A-ZŹŻŁ]{1}[a-zżźćńłśąęó]{0,12})/
+                
+                const name = document.getElementById('name').value
+                const surname = document.getElementById('surname').value
+                const deputy = document.getElementById('deputy').value
+                
+                if (nameSurnameRegex.test(name) && nameSurnameRegex.test(surname) && deputyRegex.test(deputy)) {
+                    setTimeout(() => {
+                        html2pdf().from(document.getElementById('proposal')).save()
+                    }, 1500)
+                }
             }
         </script>
     </head>
@@ -25,7 +34,7 @@
         <form method="get" name="form" id="form">
             <span class="form-control">
                 <label class="form-label" for="date">Data</label>
-                <input class="input-group-text" type="date" id="date" required>
+                <input class="input-group-text" type="date" id="date" required >
             </span>
             <span class="form-control">
                 <label class="form-label" for="neme">Imię</label>
@@ -58,11 +67,11 @@
             </span>
             <span class="form-control">
                 <label for="days">Ilość dni roboczych</label>
-                <input class="input-group-text" type="text" id="days" required>
+                <input class="input-group-text" type="number" id="days" required>
             </span>
             <span class="form-control">
                 <label for="hours">Ilość godzin roboczych</label>
-                <input class="input-group-text" type="text" id="hours" required>
+                <input class="input-group-text" type="number" id="hours" required>
             </span>
             <span class="form-control">
                 <label class="form-label" for="deputy">Zastępstwo na stanowisku: </label>
