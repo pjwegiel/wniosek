@@ -10,6 +10,38 @@ const submit = (event) => {
     const days = document.getElementById('days').value
     const hours = document.getElementById('hours').value
 
+    const dateDiv = document.getElementById('dateDiv')
+    const nameSurnameDiv = document.getElementById('nameSurnameDiv')
+    const startDiv = document.getElementById('startDiv')
+    const endDiv = document.getElementById('endDiv')
+    const deputyDiv = document.getElementById('deputyDiv')
+    const daysDiv = document.getElementById('daysDiv')
+    const hoursDiv = document.getElementById('hoursDiv')
+    const vacationCheckbox = document.getElementById('vacationCheckbox')
+    const demandChexbox = document.getElementById('demandCheckbox')
+    const occasionalCheckbox = document.getElementById('occasionalCheckbox')
+    const occasionalReasonDiv = document.getElementById('occasionalReasonDiv')
+    const freeCheckbox = document.getElementById('freeCheckbox')
+    const freeReasonDiv1 = document.getElementById('freeReasonDiv1')
+    const freeReasonDiv2 = document.getElementById('freeReasonDiv2')
+    const careCheckbox = document.getElementById('careCheckbox')
+
+    dateDiv.innerHTML = ''
+    nameSurnameDiv.innerHTML = ''
+    startDiv.innerHTML = ''
+    endDiv.innerHTML = ''
+    deputyDiv.innerHTML = ''
+    daysDiv.innerHTML = ''
+    hoursDiv.innerHTML = ''
+    vacationCheckbox.checked = false
+    demandChexbox.checked = false
+    occasionalCheckbox.checked = false
+    occasionalReasonDiv.innerHTML = ''
+    freeCheckbox.checked = false
+    freeReasonDiv1.innerHTML = ''
+    freeReasonDiv2.innerHTML = ''
+    careCheckbox.checked = false
+
 
     const data = {
         date,
@@ -24,35 +56,35 @@ const submit = (event) => {
         hours
     }
 
-    document.getElementById('dateDiv').innerHTML = data.date
-    document.getElementById('nameSurnameDiv').innerHTML = data.name + " " + data.surname
-    document.getElementById('startDiv').innerHTML = data.start
-    document.getElementById('endDiv').innerHTML = data.end
-    document.getElementById('deputyDiv').innerHTML = data.deputy
-    document.getElementById('daysDiv').innerHTML = data.days
-    document.getElementById('hoursDiv').innerHTML = data.hours
+    dateDiv.innerHTML = data.date
+    nameSurnameDiv.innerHTML = data.name + " " + data.surname
+    startDiv.innerHTML = data.start
+    endDiv.innerHTML = data.end
+    deputyDiv.innerHTML = data.deputy
+    daysDiv.innerHTML = data.days
+    hoursDiv.innerHTML = data.hours
 
     if (data.type === "wypoczynkowy") {
-        document.getElementById('vacationCheckbox').checked = true
+        vacationCheckbox.checked = true
     } 
     if (data.type === "zadanie") {
-        document.getElementById('demandCheckbox').checked = true
+        demandChexbox.checked = true
     }
     if (data.type === "okolicznosciowy") {
-        document.getElementById('occasionalCheckbox').checked = true
-        document.getElementById('occasionalReasonDiv').innerHTML = data.reason
+        occasionalCheckbox.checked = true
+        occasionalReasonDiv.innerHTML = data.reason
     }
     if (data.type === "wolny") {
-        document.getElementById('freeCheckbox').checked = true
+        freeCheckbox.checked = true
         const reasonArr = data.reason.split(" ")
         const reasonFirstLine = reasonArr[0] + " " + reasonArr[1]
         const reasonSecondLineArr = reasonArr.slice(2)
         const reasonSecondLine = reasonSecondLineArr.join(" ")
-        document.getElementById('freeReasonDiv1').innerHTML = reasonFirstLine
-        document.getElementById('freeReasonDiv2').innerHTML = reasonSecondLine
+        freeReasonDiv1.innerHTML = reasonFirstLine
+        freeReasonDiv2.innerHTML = reasonSecondLine
     } 
     if (data.type === "opieki") {
-        document.getElementById('careCheckbox').checked = true
+        careCheckbox.checked = true
     }
     
     event.preventDefault()
@@ -104,5 +136,8 @@ const yyyy = today.getFullYear()
 todayDate = `${yyyy}-${mm}-${dd}`
 
 dateField.defaultValue = todayDate
+dateField.setAttribute('min', todayDate)
 startField.defaultValue = todayDate
+startField.setAttribute('min', todayDate)
 endField.defaultValue = todayDate
+endField.setAttribute('min', todayDate)

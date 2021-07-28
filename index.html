@@ -16,12 +16,25 @@
                 const name = document.getElementById('name').value
                 const surname = document.getElementById('surname').value
                 const deputy = document.getElementById('deputy').value
+                const days = document.getElementById('days').value
+                const hours = document.getElementById('hours').value
                 
-                if (nameSurnameRegex.test(name) && nameSurnameRegex.test(surname) && deputyRegex.test(deputy)) {
-                    setTimeout(() => {
-                        html2pdf().from(document.getElementById('proposal')).save()
-                    }, 1500)
+                if (deputy !== '') {
+                    if (nameSurnameRegex.test(name) && nameSurnameRegex.test(surname) && deputyRegex.test(deputy) && days !== '' && hours !== '') {
+                        setTimeout(() => {
+                            html2pdf().from(document.getElementById('proposal')).save()
+                            alert('Dokument wypełniony.')
+                        }, 1500)
+                    }
+                } else {
+                    if (nameSurnameRegex.test(name) && nameSurnameRegex.test(surname) && days !== '' && hours !== '') {
+                        setTimeout(() => {
+                            html2pdf().from(document.getElementById('proposal')).save()
+                            alert('Dokument wypełniony.')
+                        }, 1500)
+                    }
                 }
+
             }
         </script>
     </head>
@@ -38,11 +51,11 @@
             </span>
             <span class="form-control">
                 <label class="form-label" for="neme">Imię</label>
-                <input class="input-group-text" type="text" id="name" required>
+                <input class="input-group-text" type="text" id="name" pattern="([A-ZŹŻŁ]{1}[a-zżźćńłśąęó]{0,12}-[A-ZŹŻŁ]{1}[a-zżźćńłśąęó]{0,12})|([A-ZŹŻŁ]{1}[a-zżźćńłśąęó]{0,12}\s[A-ZŹŻŁ]{1}[a-zżźćńłśąęó]{0,12})|([A-ZŹŻŁ]{1}[a-zżźćńłśąęó]{0,12})" required>
             </span>
             <span class="form-control">
                 <label class="form-label" for="surname">Nazwisko</label>
-                <input class="input-group-text" type="text" id="surname" required>
+                <input class="input-group-text" type="text" id="surname" pattern="([A-ZŹŻŁ]{1}[a-zżźćńłśąęó]{0,12}-[A-ZŹŻŁ]{1}[a-zżźćńłśąęó]{0,12})|([A-ZŹŻŁ]{1}[a-zżźćńłśąęó]{0,12}\s[A-ZŹŻŁ]{1}[a-zżźćńłśąęó]{0,12})|([A-ZŹŻŁ]{1}[a-zżźćńłśąęó]{0,12})" required>
                 
             </span>
             <span class="form-control">
@@ -71,11 +84,11 @@
             </span>
             <span class="form-control">
                 <label for="hours">Ilość godzin roboczych</label>
-                <input class="input-group-text" type="number" id="hours" required>
+                <input class="input-group-text" step="0.01" type="number" id="hours" required>
             </span>
             <span class="form-control">
                 <label class="form-label" for="deputy">Zastępstwo na stanowisku: </label>
-                <input class="input-group-text" type="text" id="deputy" required>
+                <input class="input-group-text" type="text" id="deputy" pattern="([A-ZŹŻŁ]{1}[a-zżźćńłśąęó]{0,12}\s[A-ZŹŻŁ]{1}[a-zżźćńłśąęó]{0,12})">
             </span>
             <span>
                 <button type="submit" onclick="generatePDF()" class="btn btn-primary btn-lg btn-block" >Wygeneruj PDF</button>
